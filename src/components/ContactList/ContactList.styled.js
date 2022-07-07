@@ -1,19 +1,25 @@
 import styled from 'styled-components';
 
+export const List = styled.ul`
+    width: 360px;
+    padding: 8px;    
+    margin: 0px;
+`;
+
 export const Item = styled.li`
     display: flex;
     justify-content:space-between;
     align-items: center ;
     font-size: 20px;
     font-weight: 400;
-    margin-left: 20px;   
+    margin-left: 10px;   
 `;
 
 export const Button = styled.button`
     cursor: pointer;
     padding: 10px;
     display: block;
-    margin: 10px;
+    margin: 5px 10px;
     background: rgb(226, 226, 226);
     border: none;
     border-radius: 4px;

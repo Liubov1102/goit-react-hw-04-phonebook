@@ -7,15 +7,6 @@ export const Label = styled.label`
     margin-left: 20px;
     margin-top: 10px;
 `;
-export const Input = styled.input`
-    border: 1px solid black;
-    font: inherit;
-    font-size: 20px;
-    padding: 10px;
-    border-radius: 4px;
-    width: 400px;
-    outline: 0;
-`;
 
 export const Button = styled.button`
     cursor: pointer;

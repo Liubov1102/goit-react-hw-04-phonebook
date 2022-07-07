@@ -1,14 +1,9 @@
 import React from "react";
-import styled from 'styled-components';
-import PropTypes from 'prop-types';
-import { ContactElement } from "components/ContactElement/ContactElement";
 
-const List = styled.ul`
-    width: 400px;
-    padding: 6px;
-    border: 1px solid black;
-    border-radius: 4px; 
-`;
+import PropTypes from 'prop-types';
+import { ContactElement } from "components/ContactList/ContactElement";
+import { List } from "./ContactList.styled";
+
 
 export const ContactList = ({ contacts, onDeleteContact }) => {
 	return (
