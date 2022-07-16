@@ -1,31 +1,31 @@
 import React from "react";
-
 import PropTypes from 'prop-types';
-import { ContactElement } from "components/ContactList/ContactElement";
+import { ContactElement } from "components/ContactElement/ContactElement";
 import { List } from "./ContactList.styled";
 
 
 export const ContactList = ({ contacts, onDeleteContact }) => {
-	return (
-		 <List >
-            {contacts.map(({id, name, number}) => (
+  return (
+    <List >
+      {contacts.map(({ id, name, number }) => (
         
-             <ContactElement
-                key={id}
-                id={id}
-                name={name}
-                number={number}
-                onDeleteContact={onDeleteContact}
-             />
-    ))}
-         </List>
-	);
+        <ContactElement
+          key={id}
+          id={id}
+          name={name}
+          number={number}
+          onDeleteContact={onDeleteContact}
+        />
+      ))};
+    </List>
+  );
 };
+
 ContactList.propTypes = {
-    contacts: PropTypes.arrayOf(PropTypes.shape({
+  contacts: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     number: PropTypes.string.isRequired,
   })),
-    onDeleteContact: PropTypes.func.isRequired,
-}
+  onDeleteContact: PropTypes.func.isRequired,
+};

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import { nanoid } from 'nanoid';
 import { ContactForm } from "./components/ContactForm/ContactForm";
 import { ContactList } from "./components/ContactList/ContactList";
@@ -7,10 +6,6 @@ import { Filter } from "./components/Filter/Filter";
 import { Box } from "./components/Box";
 import { Title } from "./components/Title";
 import { Subtitle } from "./components/Subtitle";
-
-
-
-
 export class App extends Component {
   state = {
     contacts: [
@@ -20,6 +15,20 @@ export class App extends Component {
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
     filter: '',
+  };
+
+  componentDidMount() {
+    const contacts = localStorage.getItem('contacts');
+    const parsedContacts = JSON.parse(contacts);
+    if (parsedContacts) {
+      this.setState({ contacts: parsedContacts });
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.contacts !== prevState.contacts) {
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts))
+    };
   };
 
   handleSubmit = data => {
@@ -52,21 +61,6 @@ export class App extends Component {
     );
   };
 
-  componentDidMount() {
-    const contacts = localStorage.getItem('contacts');
-    const parsedContacts = JSON.parse(contacts);
-    if (parsedContacts) {
-      this.setState({ contacts: parsedContacts });
-    }
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    if (this.state.contacts !== prevState.contacts) {
-      localStorage.setItem('contacts', JSON.stringify(this.state.contacts))
-    }
-  }
-
-
   render() {
     const { filter } = this.state;
     const visibleContacts = this.getVisibleContacts();
@@ -90,5 +84,6 @@ export class App extends Component {
            />
       </Box>
     )    
-  }
+  };
 };
+

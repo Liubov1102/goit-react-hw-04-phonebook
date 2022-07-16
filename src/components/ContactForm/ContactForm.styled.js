@@ -1,4 +1,15 @@
 import styled from 'styled-components';
+import { Field } from 'formik';
+
+export const Input = styled(Field)`
+    border: 1px solid black;
+    font: inherit;
+    font-size: 16px;
+    padding: 8px;
+    border-radius: 4px;
+    width: 360px;
+    outline: 0;
+`;
 
 export const Label = styled.label`
     display: block;
@@ -21,5 +32,10 @@ export const Button = styled.button`
     font-size: 16px;
 :hover {
     background: rgb(175, 175, 175);
+`;
+
+export const ErrorText = styled.p`
+    margin-top: 0px;
+    color: red;
 `;
 
