@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Formik, Form, ErrorMessage  } from 'formik';
 import * as Yup from 'yup';
 import PropTypes from 'prop-types';
@@ -18,45 +18,43 @@ const FormError = ({ name }) => {
   );
 };
   
-const initialValues = {
-    name: '',
-    number: ''
-};
-export class ContactForm extends Component {
+export const ContactForm = ({ onSubmit, contactsName }) => {
 
-    handleSubmit = (values, { resetForm }) => {
-        if (this.props.contactsName.map(el => el = el.name.toLowerCase()).includes(values.name.toLowerCase())) {
+    const handleSubmit = (values, { resetForm }) => {
+        if (contactsName.map(el => el = el.name.toLowerCase()).includes(values.name.toLowerCase())) {
             alert(`${values.name} is already in contacts`)
         }
         else {
-            this.props.onSubmit(values);
+            onSubmit(values);
             resetForm();
         }
-  };
-    render() {
-        return (
-            <Formik
-                initialValues={initialValues}
-                validationSchema={validationSchema}
-                onSubmit={this.handleSubmit}>
+    };
+    
+    return (
+        <Formik
+            initialValues={{
+                name: '',
+                number: '',
+            }}
+            validationSchema={validationSchema}
+            onSubmit={handleSubmit}>
             <Form  >
                 <Label htmlFor='inputName'>Name</Label>
-                <Input           
+                <Input
                     type="text"
                     name="name"
                 />
-                 <FormError name="name" />   
-                <Label  htmlFor='inputTel'>Number</Label>
-                <Input                 
+                <FormError name="name" />
+                <Label htmlFor='inputTel'>Number</Label>
+                <Input
                     type="tel"
                     name="number"
                 />
-                 <FormError name="number" />   
-                <Button  type="submit" >Add Contact</Button>
-                </Form>
-                </Formik>
-        )
-    };
+                <FormError name="number" />
+                <Button type="submit" >Add Contact</Button>
+            </Form>
+        </Formik>
+    )
 };
 
 ContactForm.propTypes = {
